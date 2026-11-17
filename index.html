@@ -47,8 +47,8 @@ a{color:inherit}
 .hero h1{font:400 clamp(72px,14vw,172px)/.86 var(--disp);text-transform:uppercase;margin:18px 0 0;color:#fff;letter-spacing:.005em}
 .hero h1 span{display:block;color:var(--bg)}
 /* nickname: same size as the surname, palette indigo; wraps under it when there is no room */
-.hero h1 span.sb{display:flex;flex-wrap:wrap;column-gap:.28em}
-.hero h1 .nick{font-style:normal;color:var(--indigo);display:inline-block}
+.hero h1 span.sb{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:.2em}
+.hero h1 .nick{font-style:normal;color:var(--indigo);display:inline-block;font-size:.6em}
 .bio{margin-top:28px;padding:22px 24px;background:var(--bg);border:3px solid #fff;box-shadow:8px 8px 0 var(--indigo)}
 .bio p{margin:0;font-size:16.5px;line-height:1.7;color:#ece8e4}
 .bio b{color:#fff;font-weight:700}
@@ -68,6 +68,12 @@ a{color:inherit}
 
 /* about */
 .about .bio{max-width:880px}
+.tools{margin-top:46px;padding-top:28px;border-top:1px solid var(--line)}
+.tools .tl{display:block;font:700 12px/1 Inter,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin-bottom:18px}
+.tools ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:18px 30px}
+.tools li{display:flex;align-items:center;gap:14px}
+.tools i{font:400 22px/1 var(--disp);font-style:normal;letter-spacing:.02em;color:#fff;background:var(--panel);border:3px solid #fff;box-shadow:4px 4px 0 var(--indigo);width:76px;height:58px;flex:none;display:flex;align-items:center;justify-content:center;padding:0 8px}
+.tools li span{font:700 14px/1.2 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase}
 .facts2{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:26px 30px;margin-top:44px}
 /* facts */
 .facts{border-bottom:1px solid var(--line)}
@@ -331,6 +337,14 @@ img{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none;-webkit-u
       <div class="fact"><b>Alkhariqun</b><span>Contributions to local Moroccan anthologies</span></div>
       <div class="fact"><b>Manga Arabia</b><span>One-shot “The Adventures of Sinbad”</span></div>
       <div class="fact"><b>In progress</b><span>Mushroom and Space Pirates</span></div>
+    </div>
+    <div class="tools" aria-label="Software">
+      <span class="tl">Tools</span>
+      <ul>
+        <li><i aria-hidden="true">CSP</i><span>Clip Studio Paint</span></li>
+        <li><i aria-hidden="true">Ps</i><span>Photoshop</span></li>
+        <li><i aria-hidden="true">SU</i><span>SketchUp</span></li>
+      </ul>
     </div>
   </div>
 </section>
