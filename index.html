@@ -236,13 +236,10 @@ img{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none;-webkit-u
 /* contact: ripples, the loop */
 
 /* hero entrance + float */
-.hero .tag{animation:up .7s .05s both}
-.hero h1{animation:up .9s .15s cubic-bezier(.2,.8,.2,1) both}
-.hero .cta{animation:up .8s .45s both}
-.hero .nick{animation:loopy 4.5s ease-in-out 1.4s infinite}
-.stack .hc:nth-child(1){animation:drop .9s .35s cubic-bezier(.2,.9,.25,1.15) both,bob 7s ease-in-out 1.4s infinite}
-.stack .hc:nth-child(2){animation:drop .9s .55s cubic-bezier(.2,.9,.25,1.15) both,bob 8s ease-in-out 1.8s infinite}
-.stack .hc:nth-child(3){animation:drop .9s .75s cubic-bezier(.2,.9,.25,1.15) both,bob 9s ease-in-out 2.2s infinite}
+.hero .nick{animation:loopy 4.5s ease-in-out infinite}
+.stack .hc:nth-child(1){animation:bob 7s ease-in-out -2s infinite}
+.stack .hc:nth-child(2){animation:bob 8s ease-in-out -4s infinite}
+.stack .hc:nth-child(3){animation:bob 9s ease-in-out -6s infinite}
 .hero.paused .hc{animation-play-state:paused}
 .links a.ig{background-image:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);background-size:60% 100%;background-repeat:no-repeat;animation:sweep 6s ease-in-out infinite}
 .prog{position:absolute;left:0;right:0;bottom:-1px;height:3px;background:var(--red);transform-origin:0 50%;transform:scaleX(var(--pg,0));pointer-events:none}
@@ -723,6 +720,19 @@ html.js .rvh.in{clip-path:inset(0 0 0 0);translate:0 0}
     clr(); tm=setTimeout(function(){ cur=el; el.classList.add('press'); },70);
   },{passive:true});
   ['pointerup','pointercancel','scroll','touchmove','contextmenu'].forEach(function(n){ document.addEventListener(n,function(){ setTimeout(clr,n==='pointerup'?160:0); },{passive:true,capture:true}); });
+})();
+
+(function(){
+  /* on refresh, start from the top (Back/Forward still restore position) */
+  try{
+    var nav=performance.getEntriesByType('navigation')[0];
+    if(nav && nav.type==='reload'){
+      if('scrollRestoration' in history) history.scrollRestoration='manual';
+      if(location.hash) history.replaceState(null,'',location.pathname+location.search);
+      window.scrollTo(0,0);
+      window.addEventListener('load',function(){ window.scrollTo(0,0); });
+    }
+  }catch(_){}
 })();
 </script>
 
