@@ -772,6 +772,20 @@ html.js .rvh.in{clip-path:inset(0 0 0 0);translate:0 0}
 })();
 
 (function(){
+  /* arrows: a fast second tap must never zoom the page; treat every tap as a click ourselves */
+  var SEL='.lb-nav,.lb-x,.cn';
+  document.addEventListener('touchend',function(e){
+    var t=e.target&&e.target.closest?e.target.closest(SEL):null;
+    if(!t||t.disabled) return;
+    if(e.touches&&e.touches.length) return;
+    e.preventDefault(); t.click();
+  },{passive:false});
+  document.addEventListener('dblclick',function(e){
+    if(e.target&&e.target.closest&&e.target.closest(SEL)) e.preventDefault();
+  });
+})();
+
+(function(){
   /* story carousels: arrows for mouse users, squares show the position */
   var smooth=!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   Array.prototype.forEach.call(document.querySelectorAll('.car'),function(car){
